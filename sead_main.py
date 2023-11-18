@@ -23,7 +23,7 @@ def calcola_tempo_soppressione(velocita_aereo, distanza_minaccia, raggio_minacci
         # Calcolo del tempo di uscita dall'area di minaccia
         tempo_uscita_minaccia = tempo_ingresso_minaccia + timedelta(minutes=(tempo_di_through / 60 + tof_colpo / 60))
         # Calcolo del tempo di fine soppressione per coprire l'aereo durante l'uscita dalla minaccia
-        tempo_fine_soppressione_uscita = tempo_uscita_minaccia + timedelta(seconds=30)
+        tempo_fine_soppressione = tempo_ingresso_minaccia + timedelta(minutes=(tempo_di_through / 60 + tof_colpo / 60))
         # Ritorna i risultati
         risultati = {
             "tempo_ingresso_minaccia": tempo_ingresso_minaccia.strftime('%H:%M:%S'),
@@ -45,7 +45,7 @@ st.title("Calcolatore di Tempo di Soppressione")
 velocita_aereo = st.number_input("Velocità dell'aereo in nodi", min_value=0.0, step=1.0)
 distanza_minaccia = st.number_input("Distanza tra il punto di partenza e l'obiettivo in nm", min_value=0.0, step=1.0)
 raggio_minaccia = st.number_input("Raggio dell'area di minaccia in nm", min_value=0.0, step=1.0)
-tot_obiettivo = st.text_input("Tempo di obiettivo (TOT) nel formato HH:MM:SS")
+tot_obiettivo = st.text_input("Tempo di obiettivo (TOT) nel formato HH:MM:SS ")
 tof_colpo = st.number_input("Time of Flight (TOF) del colpo di soppressione in secondi", min_value=0.0, step=1.0)
 
 # Calcola il tempo di soppressione solo se il pulsante è stato premuto
