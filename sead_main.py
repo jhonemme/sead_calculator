@@ -22,13 +22,15 @@ def calcola_tempo_soppressione(velocita_aereo, distanza_minaccia, raggio_minacci
 
         # Calcolo del tempo di uscita dall'area di minaccia
         tempo_uscita_minaccia = tempo_ingresso_minaccia + timedelta(minutes=(tempo_di_through / 60 + tof_colpo / 60))
-
+        # Calcolo del tempo di fine soppressione per coprire l'aereo durante l'uscita dalla minaccia
+        tempo_fine_soppressione_uscita = tempo_uscita_minaccia + timedelta(seconds=30)
         # Ritorna i risultati
         risultati = {
             "tempo_ingresso_minaccia": tempo_ingresso_minaccia.strftime('%H:%M:%S'),
             "tempo_soppressione": tempo_soppressione.strftime('%H:%M:%S'),
             "tempo_fine_soppressione": tempo_fine_soppressione.strftime('%H:%M:%S'),
-            "tempo_uscita_minaccia": tempo_uscita_minaccia.strftime('%H:%M:%S')
+            "tempo_uscita_minaccia": tempo_uscita_minaccia.strftime('%H:%M:%S'),
+            "tempo_fine_soppressione_uscita": tempo_fine_soppressione_uscita.strftime('%H:%M:%S')
         }
 
         return risultati
